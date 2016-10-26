@@ -8,13 +8,16 @@ var gammabutton;
 
 var bubble1;
 var bubble2;
+var bubble3;
 
 
 var alfabool = false;
 var betabool = false;
+var gammabool = false;
 
 var alfaArray = [];
 var betaArray = [];
+var gammaArray = [];
 
 
 function setup() {
@@ -30,6 +33,12 @@ function setup() {
   betabutton.mousePressed(betarandom);
 
   bubble2 = new betabubble(random(width), random(height));
+  
+  gammabutton = createButton("gamma");
+  gammabutton.position(100, 10);
+  gammabutton.mousePressed(gammarandom);
+
+  bubble3 = new gammabubble(random(width), random(height));
 
 }
 
@@ -70,7 +79,21 @@ function draw() {
     betaArray = [];
   }
 
+ if (gammabool == true) {
+    var randomgamma = random(38, 45.1);
+    gamma = int(map(randomgamma, 38, 45.1, 0, 50));
+    console.log(gamma);
 
+    for (var i = 0; i < gamma; i++) {
+      gammaArray.push(new gammabubble(random(width), random(height)));
+    }
+
+    for (var i = 0; i < gammaArray.length; i++) {
+      gammaArray[i].display();
+    }
+
+    gammaArray = [];
+  }
   // bubble1.display();
 
 
@@ -95,7 +118,15 @@ function betarandom() {
   }
   // console.log(betabool);
 }
+function gammarandom() {
+  if (gammabool == false) {
+    gammabool = true;
 
+  } else {
+    gammabool = false;
+  }
+  // console.log(betabool);
+}
 
 function alfabubble(tempX, tempY) {
   this.x = tempX;
@@ -114,6 +145,16 @@ function betabubble(tempX, tempY) {
 
   this.display = function() {
     fill("blue");
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+}
+}
+function gammabubble(tempX, tempY) {
+  this.x = tempX;
+  this.y = tempY;
+  this.diameter = 50;
+
+  this.display = function() {
+    fill("yellow");
     ellipse(this.x, this.y, this.diameter, this.diameter);
 }
 }
