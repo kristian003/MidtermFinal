@@ -21,7 +21,7 @@ var gammaArray = [];
 
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(800, 600);
   alfbutton = createButton("alpha");
   alfbutton.position(10, 10);
   alfbutton.mousePressed(alfarandom);
@@ -49,7 +49,7 @@ function draw() {
 
   if (alfabool == true) {
     var randomalf = random(7.5, 12.6);
-    alf = int(map(randomalf, 7.5, 12.6, 0, 50));
+    alf = int(map(randomalf, 7.5, 12.6, 0, 25));
     console.log(alf);
 
     for(var i = 0; i < alf; i++){
@@ -81,7 +81,7 @@ function draw() {
 
  if (gammabool == true) {
     var randomgamma = random(38, 45.1);
-    gamma = int(map(randomgamma, 38, 45.1, 0, 50));
+    gamma = int(map(randomgamma, 38, 45.1, 0, 100));
     console.log(gamma);
 
     for (var i = 0; i < gamma; i++) {
@@ -131,11 +131,13 @@ function gammarandom() {
 function alfabubble(tempX, tempY) {
   this.x = tempX;
   this.y = tempY;
-  this.diameter = 50;
+  this.diameter = 100;
 
   this.display = function() {
-    fill("green");
+    fill(color(0, 255, 0));
+    // noStroke();
     ellipse(this.x, this.y, this.diameter, this.diameter);
+    
 }
 }
 function betabubble(tempX, tempY) {
@@ -144,17 +146,21 @@ function betabubble(tempX, tempY) {
   this.diameter = 50;
 
   this.display = function() {
-    fill("blue");
+    fill(color(0, 0, 255));
+    // noStroke();
     ellipse(this.x, this.y, this.diameter, this.diameter);
+    
 }
 }
 function gammabubble(tempX, tempY) {
   this.x = tempX;
   this.y = tempY;
-  this.diameter = 50;
+  this.diameter = 75;
 
   this.display = function() {
-    fill("yellow");
+    fill(color(255, 0, 0));
+    // noStroke();
     ellipse(this.x, this.y, this.diameter, this.diameter);
+    
 }
 }
